@@ -5,4 +5,4 @@ function maxMin(arr1,arr2){
     return [Math.max(...arr), Math.min(...arr)]
 }
 
-  console.log(maxMin([1,3,5],[9,8,7]))
+console.log(maxMin([1,3,5],[9,8,7]))
