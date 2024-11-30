@@ -1,29 +1,15 @@
-function whosOnline(friends) {
-    const statusGroups = {
-      online: [],
-      offline: [],
-      away: [],
-    };
-  
-    for (const friend of friends) {
-      const { username, status, lastActivity } = friend;
-  
-      if (status === 'online') {
-        if (lastActivity <= 10) {
-          statusGroups.online.push(username);
-        } else {
-          statusGroups.away.push(username);
+const whosOnline = (friends) => {
+    let output = {};
+    friends.forEach(e => {
+        let status = e.status;
+        if(status === 'online' && e.lastActivity > 10) status = 'away';
+        let temp = output[status];
+        if(output[status]) {
+            output[status].push(e.username);
         }
-      } else {
-        statusGroups.offline.push(username);
-      }
-    }
-  
-    for (const key in statusGroups) {
-      if (statusGroups[key].length === 0) {
-        delete statusGroups[key];
-      }
-    }
-  
-    return statusGroups;
-  }
+        else {
+            output[status] = [e.username];
+        }
+    });
+    return output;
+}
