@@ -1,30 +1,15 @@
 // https://www.codewars.com/kata/56f935002e6c0d55fa000d92/
 
-class Animal {
-    constructor(name, age, status, legs, species) {
-      this.name = name;
-      this.age = age;
-      this.status = status;
-      this.legs = legs;
-      this.species = species;
-    }
-  
-    introduce() {
-      return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
-    }
-  }
-  
-  class Shark extends Animal {
+class Shark extends Animal {
     constructor(name, age, status) {
-      super(name, age, status, 0, 'shark');
+      super(name, age, 0, "shark", status);
     }
   }
   
   class Cat extends Animal {
     constructor(name, age, status) {
-      super(name, age, status, 4, 'cat');
+      super(name, age, 4, "cat", status);
     }
-  
     introduce() {
       return `${super.introduce()}  Meow meow!`;
     }
@@ -32,12 +17,10 @@ class Animal {
   
   class Dog extends Animal {
     constructor(name, age, status, master) {
-      super(name, age, status, 4, 'dog');
+      super(name, age, 4, "dog", status);
       this.master = master;
     }
-  
     greetMaster() {
       return `Hello ${this.master}`;
     }
-  }
-  
+}
