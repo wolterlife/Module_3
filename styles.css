@@ -1,0 +1,152 @@
+body {
+  background-color: rgb(61, 61, 61);
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form {
+  border: 2px solid #ff790c;
+  width: fit-content;
+  color: white;
+  margin: 12px;
+  padding: 8px;
+}
+
+input[type="text"] {
+  width: 107px;
+}
+
+button {
+  width: 114px;
+}
+
+main {
+  display: flex;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 3;
+  min-width: 30%;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: rgb(46, 46, 46);
+  flex: 2;
+  min-width: 20%;
+}
+
+.wrapperPreview {
+  position: fixed;
+}
+
+.previewInfo {
+  margin: 42px 12px 12px;
+}
+
+.previewInside {
+  border: 1px solid #ffffff;
+  user-select: none;
+
+  & > img {
+    width: 280px;
+  }
+
+  & > p {
+    margin: 12px;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+.closeBtn {
+  display: none;
+  position: sticky;
+  width: fit-content;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  margin-top: 12px;
+  padding: 0px 4px;
+  top: 28px;
+  left: 98%;
+  border: 1px solid white;
+}
+
+.buttonsDirection {
+  display: flex;
+
+  & > button {
+    display: none;
+    border: 0;
+    color: white;
+    background-color: rgb(61, 61, 61);
+    cursor: pointer;
+    margin-left: 24px;
+  }
+}
+
+.moveButton {
+  display: none;
+  position: fixed;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  bottom: 30px;
+  right: 0px;
+
+  & > img {
+    width: 30px;
+  }
+}
+
+.coordinates {
+  color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 4px;
+  visibility: hidden;
+}
+
+.card {
+  width: fit-content;
+  margin: 12px;
+  background-color: black;
+  cursor: pointer;
+
+  & > p {
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+  }
+
+  & > img {
+    pointer-events: none;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.active {
+  outline: 2px solid white;
+}
+
+.resizer {
+  width: 10px;
+  cursor: ew-resize;
+  background-color: #ff790c;
+}
+
+.buttonPrev:disabled,
+.buttonNext:disabled {
+  background-color: #1b1b1b;
+}
