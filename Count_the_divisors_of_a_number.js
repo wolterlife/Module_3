@@ -27,3 +27,5 @@ function getDivisorsCnt(n) {
 }
 
 console.log(getDivisorsCnt(10)); // 4
+
+
