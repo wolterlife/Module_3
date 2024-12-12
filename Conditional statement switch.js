@@ -6,10 +6,10 @@ function howManydays(month) {
         case 6:
         case 9:
         case 11:
-        return 30;
+            return 30;
         case 2:
-        return 28;
+            return 28;
         default:
-        return 31;
+            return 31;
     }
 }

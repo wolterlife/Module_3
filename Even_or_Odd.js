@@ -5,4 +5,4 @@ function evenOrOdd(number) {
     else return "Odd"
 }
 
-evenOrOdd(2); // Even
+console.log(evenOrOdd(2)) // Even

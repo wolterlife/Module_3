@@ -1,8 +1,8 @@
 // https://www.codewars.com/kata/542c0f198e077084c0000c2e
 
-/*
 
-function getDivisorsCnt(n){
+
+function getDivisorsCnt(n) {
     let count = 0;
     for (let i = 1; i <= n; i++) {
         if (n % i == 0) count++
@@ -10,7 +10,6 @@ function getDivisorsCnt(n){
     return count
 }
 
-*/
 
 
 function getDivisorsCnt(n) {
@@ -19,7 +18,7 @@ function getDivisorsCnt(n) {
         count++;
     }
 
-    for(let i = 0; i < Math.sqrt(n); i++) {
+    for (let i = 0; i < Math.sqrt(n); i++) {
         if (n % i == 0) {
             count = count + 2;
         }
