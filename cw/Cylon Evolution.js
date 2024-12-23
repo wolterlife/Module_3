@@ -3,7 +3,8 @@
 function Cylon(model) {
     this.model = model;
 }
-Cylon.prototype.attack = function() {
+
+Cylon.prototype.attack = function () {
     return "Destroy all humans!";
 };
 
@@ -15,6 +16,6 @@ HumanSkin.prototype = Object.create(Cylon.prototype);
 
 HumanSkin.prototype.constructor = HumanSkin;
 
-HumanSkin.prototype.infiltrate = function() {
+HumanSkin.prototype.infiltrate = function () {
     return "Infiltrate the colonies";
 };

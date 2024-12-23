@@ -1,28 +1,31 @@
-function PaginationHelper(collection, itemsPerPage) {
-    this.collection = collection;
-    this.itemsPerPage = itemsPerPage;
-}
-
-PaginationHelper.prototype.itemCount = function () {
-    return this.collection.length;
-}
-
-PaginationHelper.prototype.pageCount = function () {
-    return Math.ceil(this.itemCount() / this.itemsPerPage);
-}
-
-PaginationHelper.prototype.pageItemCount = function (pageIndex) {
-    var pagecount = this.pageCount();
-    if (pageIndex < 0 || pageIndex >= pagecount) return -1;
-    if (pageIndex == pagecount - 1) {
-        return this.itemCount() - Math.floor((this.itemCount() / this.itemsPerPage)) * this.itemsPerPage;
+class PaginationHelper {
+    constructor(collection, itemsPerPage) {
+        this.collection = collection;
+        this.itemsPerPage = itemsPerPage;
     }
-    return this.itemsPerPage;
-}
 
-PaginationHelper.prototype.pageIndex = function (itemIndex) {
-    var page = Math.floor(itemIndex / this.itemsPerPage);
-    if (page >= this.pageCount() || page < 0)
-        return -1;
-    return page;
+    itemCount() {
+        return this.collection.length;
+    }
+
+    pageCount() {
+        return Math.ceil(this.collection.length / this.itemsPerPage);
+    }
+
+    pageItemCount(pageIndex) {
+        if (pageIndex < 0 || pageIndex >= this.pageCount()) {
+            return -1;
+        }
+        const startIndex = pageIndex * this.itemsPerPage; // 4
+        const endIndex = Math.min(startIndex + this.itemsPerPage, this.itemCount()); //6
+        return endIndex - startIndex;
+    }
+
+
+    pageIndex(itemIndex) {
+        if (itemIndex < 0 || itemIndex >= this.itemCount()) {
+            return -1;
+        }
+        return Math.floor(itemIndex / this.itemsPerPage);
+    }
 }

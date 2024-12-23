@@ -7,9 +7,5 @@ function add(n) {
         return n;
     };
 
-    chain.toString = function () {
-        return String(n);
-    };
-
     return chain;
 }
