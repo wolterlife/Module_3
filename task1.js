@@ -7,9 +7,9 @@ const user = {
 // console.log(Object.getOwnPropertyDescriptors(user))
 
 Object.defineProperties(user, {
-    name: {enumerable: false, configurable: false, writable: false},
-    age: {enumerable: false, configurable: false, writable: false},
-    job: {enumerable: false, configurable: false, writable: false},
+    name: { enumerable: false, configurable: false, writable: false },
+    age: { enumerable: false, configurable: false, writable: false },
+    job: { enumerable: false, configurable: false, writable: false },
 })
 
 console.log('properties after changing: ', Object.getOwnPropertyDescriptors(user))

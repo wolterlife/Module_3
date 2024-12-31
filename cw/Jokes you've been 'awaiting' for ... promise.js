@@ -1,7 +1,7 @@
 // https://www.codewars.com/kata/5a353a478f27f244a1000076
 
 async function sayJoke(apiUrl, jokeId) {
-  const response = await fetch(apiUrl);
+  const response = await fetch(apiUrl)
   const json = await response.json();
 
   if (!json.hasOwnProperty('jokes')) throw new Error(`No jokes at url: ${apiUrl}`)

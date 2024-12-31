@@ -14,8 +14,6 @@ function HumanSkin(model) {
 
 HumanSkin.prototype = Object.create(Cylon.prototype);
 
-HumanSkin.prototype.constructor = HumanSkin;
-
 HumanSkin.prototype.infiltrate = function () {
     return "Infiltrate the colonies";
 };

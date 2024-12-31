@@ -2,9 +2,9 @@
 
 var alpha = {
     name: 'My Alpha',
-    getNameFunc: function() {
-        var self = this;
-        return function() {
+    getNameFunc: function () {
+        let self = this;
+        return function () {
             return self.name;
         };
     }

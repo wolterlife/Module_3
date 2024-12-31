@@ -1,24 +1,25 @@
 class Product {
-    constructor(name, price, productsDiscount) {
+    constructor(name, price) {
         this.name = name;
         this.price = price;
-        this.productsDiscount = productsDiscount;
+        // this.productsDiscount = productsDiscount;
     }
 
     setDiscount(discount) {
-        this.productsDiscount.setDiscount(this, discount)
+        this.discount = discount
     }
-    
+
     getDiscount() {
         return this.productsDiscount.getDiscount(this)
     }
 
-    deleteProduct() {
-        this.productsDiscount.deleteDeep(this);
-    }
+    // deleteProduct() {
+    //     this.productsDiscount.deleteDeep(this);
+    // }
 }
 
 class ProductsDiscount {
+    // Внутри можно использовать функции от продукта
     constructor() {
         this.discounts = new Map();
     }

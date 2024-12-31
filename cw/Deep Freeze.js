@@ -4,7 +4,7 @@ Object.deepFreeze = function (object) {
   const propNames = Object.getOwnPropertyNames(object);
 
   for (const name of propNames) {
-    const value = object[name];
+    let value = object[name];
 
     if (typeof value === 'object') {
       Object.deepFreeze(value);
