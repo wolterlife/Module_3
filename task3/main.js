@@ -1,13 +1,3 @@
-// function findPrimes1(start, end) {
-//     let count = 0;
-//     for (let i = start; i <= end; i++) {
-//       if (end % i === 0) {
-//         count = count + 1;
-//       } 
-//     }
-//     return count;
-// }
-
 function isPrime(num) {
     if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -16,31 +6,43 @@ function isPrime(num) {
     return true;
 }
 
-// 
+function countPrimesInRange(start, end) {
+    let primeCount = 0;
+    for (let i = start; i <= end; i++) {
+        if (isPrime(i)) {
+            primeCount++;
+        }
+    }
+    return primeCount;
+}
 
 async function findPrimes2(start, end) {
     const startTime = performance.now();
-    const primes = [];
-    const range = end - start;
-    const progressStep = Math.floor(range / 10);
-    let nextProgressCheck = start + progressStep;
-    let progressCount = 10;
+    let totalPrimeCount = 0;
+    const range = end - start + 1;
+    const chunkSize = Math.floor(range / 10);
+    let progressCount = 0;
 
-    for (let i = start; i <= end; i++) {
-        if (isPrime(i)) {
-            primes.push(i);
-        }
-        if (i >= nextProgressCheck) {
-            console.log(`Прогресс: ${progressCount}%`);
-            nextProgressCheck += progressStep;
-            progressCount += 10;
-            // await new Promise(r => setTimeout(r, 0));
-        }
+    const promises = [];
+
+    for (let i = 0; i < 10; i++) {
+        const chunkStart = start + i * chunkSize;
+        const chunkEnd = (i === 9) ? end : chunkStart + chunkSize - 1;
+
+        promises.push(new Promise((resolve) => {
+            setTimeout(() => {
+                const chunkPrimeCount = countPrimesInRange(chunkStart, chunkEnd);
+                totalPrimeCount += chunkPrimeCount;
+                progressCount += 10;
+                console.log(`Прогресс: ${progressCount}%`);
+                resolve();
+            }, 0);
+        }));
     }
 
+    await Promise.all(promises);
+
     const endTime = performance.now();
-    console.log(`Простых чисел: ${primes.length}`);
+    console.log(`Простых чисел: ${totalPrimeCount}`);
     console.log(`Время: ${(endTime - startTime).toFixed(2)} миллисекунд`);
 }
-
-findPrimes2(1, 1000000)
