@@ -20,27 +20,33 @@ async function findPrimes2(start, end) {
     const startTime = performance.now();
     let totalPrimeCount = 0;
     const range = end - start + 1;
-    const chunkSize = Math.floor(range / 10);
+    const chunkSize = Math.floor(range / 100);
     let progressCount = 0;
+    let completedChunks = 0;
 
     const promises = [];
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 100; i++) {
         const chunkStart = start + i * chunkSize;
-        const chunkEnd = (i === 9) ? end : chunkStart + chunkSize - 1;
+        const chunkEnd = (i === 99) ? end : chunkStart + chunkSize - 1;
 
         promises.push(new Promise((resolve) => {
             setTimeout(() => {
                 const chunkPrimeCount = countPrimesInRange(chunkStart, chunkEnd);
                 totalPrimeCount += chunkPrimeCount;
-                progressCount += 10;
-                console.log(`Прогресс: ${progressCount}%`);
-                resolve();
+                completedChunks++;
+                if (completedChunks % 10 === 0) {
+                    progressCount += 10;
+                    console.log(`Прогресс: ${progressCount}%`);
+                }
+                resolve({ chunkStart, chunkEnd, totalPrimeCount, chunkSize: chunkEnd - chunkStart });
             }, 0);
         }));
     }
 
+
     await Promise.all(promises);
+    console.log(promises);
 
     const endTime = performance.now();
     console.log(`Простых чисел: ${totalPrimeCount}`);

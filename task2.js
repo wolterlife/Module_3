@@ -2,53 +2,35 @@ class Product {
     constructor(name, price) {
         this.name = name;
         this.price = price;
-        // this.productsDiscount = productsDiscount;
     }
 
     setDiscount(discount) {
-        this.discount = discount
+        discounts.set(this, discount);
     }
 
     getDiscount() {
-        return this.productsDiscount.getDiscount(this)
+        return discounts.get(this) || "No discount";
     }
 
-    // deleteProduct() {
-    //     this.productsDiscount.deleteDeep(this);
-    // }
-}
-
-class ProductsDiscount {
-    // Внутри можно использовать функции от продукта
-    constructor() {
-        this.discounts = new Map();
-    }
-
-    setDiscount(product, discount) {
-        this.discounts.set(product, discount);
-    }
-
-    getDiscount(product) {
-        return this.discounts.get(product);
-    }
-
-    deleteDeep(product) {
-        this.discounts.delete(product)
-    }
-
-    showDiscounts() {
-        this.discounts.forEach((discount, product) => {
-            console.log(`${product.name} - ${discount}$`);
-        });
+    delete() {
+        discounts.delete(this);
+        console.log(`${this.name} deleted`);
     }
 }
 
-const productsDiscount = new ProductsDiscount();
-const product1 = new Product('Volvo', 3000, productsDiscount)
-const product2 = new Product('Tesla', 3500, productsDiscount)
+const discounts = new WeakMap();
 
-product1.setDiscount(20)
-product2.setDiscount(10)
-product1.deleteProduct();
+let product1 = new Product("Laptop", 1000);
+let product2 = new Product("Phone", 500);
+let product3 = new Product("Tablet", 300);
 
-productsDiscount.showDiscounts();
+product1.setDiscount(10);
+product2.setDiscount(5);
+
+console.log("Скидка для Laptop:", product1.getDiscount());
+console.log("Скидка для Phone:", product2.getDiscount());
+console.log("Скидка для Tablet:", product3.getDiscount());
+
+product2.delete();
+
+console.log("Скидка для Phone после удаления:", discounts.get(product2) || "No discount");
