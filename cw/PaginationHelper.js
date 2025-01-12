@@ -16,8 +16,8 @@ class PaginationHelper {
         if (pageIndex < 0 || pageIndex >= this.pageCount()) {
             return -1;
         }
-        const startIndex = pageIndex * this.itemsPerPage; // 4
-        const endIndex = Math.min(startIndex + this.itemsPerPage, this.itemCount()); //6
+        const startIndex = pageIndex * this.itemsPerPage;
+        const endIndex = Math.min(startIndex + this.itemsPerPage, this.itemCount());
         return endIndex - startIndex;
     }
 

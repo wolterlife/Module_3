@@ -36,10 +36,19 @@ function finder(i, folder, jsFiles) {
   });
 }
 
-function isJsFile(file) {
-  return typeof file === 'string' && /\.js/i.test(file);
+function isJsFile(fileName) {
+  return typeof fileName === 'string' && /\.js/i.test(fileName);
 }
 
 function isFolder(file) {
-  return (file.size && file.read);
+  return !!(file.size && file.read);
 }
+
+
+let obj = {
+  size: () => { },
+  read: () => { }
+}
+
+
+console.log(isFolder(obj));

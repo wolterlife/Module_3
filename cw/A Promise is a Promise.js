@@ -5,11 +5,11 @@ async function promiseHelloWorld() {
     return await 'Hello World!'
 }
 
-//     return new Promise((resolve) => {
-//         resolve('Hello World!')
-//     })
-//
-//    const promiseHelloWorld = () => Promise.resolve('Hello World!');
-//
-//
+return new Promise((resolve) => {
+    resolve('Hello World!')
+})
+
+const promiseHelloWorld = () => Promise.resolve('Hello World!');
+
+
 

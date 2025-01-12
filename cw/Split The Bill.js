@@ -14,7 +14,7 @@ function splitTheBill(group) {
     const balances = {};
     for (let person in group) {
         const balance = group[person] - averageSpent;
-        balances[person] = Math.round(balance * 100) / 100;
+        balances[person] = +balance.toFixed(2);
     }
 
     return balances;

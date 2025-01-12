@@ -1,3 +1,12 @@
+WeakMap.prototype.deleteProduct = function (product) {
+    if (this.has(product)) {
+        this.delete(product);
+        console.log(`${product.name} and its discount have been deleted.`);
+    } else {
+        console.log(`${product.name} not found in discounts.`);
+    }
+};
+
 class Product {
     constructor(name, price) {
         this.name = name;
@@ -10,11 +19,6 @@ class Product {
 
     getDiscount() {
         return discounts.get(this) || "No discount";
-    }
-
-    delete() {
-        discounts.delete(this);
-        console.log(`${this.name} deleted`);
     }
 }
 
@@ -31,6 +35,6 @@ console.log("Скидка для Laptop:", product1.getDiscount());
 console.log("Скидка для Phone:", product2.getDiscount());
 console.log("Скидка для Tablet:", product3.getDiscount());
 
-product2.delete();
+discounts.deleteProduct(product2);
 
 console.log("Скидка для Phone после удаления:", discounts.get(product2) || "No discount");

@@ -14,3 +14,7 @@ Plugboard = function (wires) {
     return i == -1 ? wire : wires[i + 1 - 2 * (i % 2)];
   }
 }
+
+let en = new Plugboard("ABCDEFGHIJKLMNOPQRST")
+
+console.log(en.process("T"))
