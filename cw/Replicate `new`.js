@@ -3,5 +3,8 @@
 function nouveau(Constructor, ...args) {
   const instance = Object.create(Constructor.prototype);
   const result = Constructor.apply(instance, args);
-  return result === Object(result) ? result : instance;
+  return (result !== null && typeof result === 'object') ? result : instance;
 }
+
+
+console.log(typeof null === 'object')

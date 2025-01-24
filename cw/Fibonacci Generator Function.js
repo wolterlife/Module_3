@@ -10,3 +10,21 @@ function* fibonacci() {
     b = next;
   }
 }
+
+/*
+next = 0 + 1 = 1
+a = 1;
+b = 1
+// return 1
+
+next = 1 + 1 = 2
+a = 1
+b = 2
+return 1
+
+next = 1 + 2 = 3
+a = 2
+b = 3
+return 2
+
+*/

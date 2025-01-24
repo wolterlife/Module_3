@@ -4,3 +4,6 @@ Object.defineProperty(Person.prototype, "name", {
   get: Person.prototype.getName,
   set: function (name) { [this.firstName, this.lastName] = name.split(" "); },
 });
+
+Person.name;
+Person.name = 8;

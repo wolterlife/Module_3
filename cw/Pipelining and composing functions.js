@@ -8,4 +8,4 @@ function compose(...functions) {
   return function (initialValue) {
     return functions.reduceRight((value, fn) => fn(value), initialValue);
   };
-}
+} 
